@@ -29,7 +29,7 @@ router.post('/process-speech', async (req, res) => {
     console.log('User said:', userSpeech);
 
     // Send the speech to ChatGPT API
-    const chatgptResponse = await sendToChatGPT(userSpeech);
+    const chatgptResponse = await sendToChatGPT("answer it very concisely '"+ userSpeech + "'");
 
     // Respond to the user
     const twiml = new twilio.twiml.VoiceResponse();
