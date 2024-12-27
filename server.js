@@ -1,22 +1,25 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
-const router = require('./routes/call-ai');
+const callAiRoutes = require('./routes/call-ai');
+
 dotenv.config();
+
 const app = express();
+
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const port = process.env.PORT
+// Routes
+app.use(callAiRoutes);
 
-app.use(router);
+app.get('/', (req, res) => {
+    res.send('Server is Running');
+});
 
-app.get('/',(req,res)=>{
-    res.send("Sever is Running")
-})
-
-
-app.listen(port,()=>{
-    console.log(`server is running on port ${port}`)
+// Start server
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });
