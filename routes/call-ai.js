@@ -25,8 +25,9 @@ router.post('/incoming-call', (req, res) => {
 
 // Process speech input
 router.post('/process-speech', async (req, res) => {
+    console.log("req.body thing ----- ",req.body);
     const rawAudio = req.body.RecordingUrl; // Twilio may save the audio URL here
-
+    
     try {
         // Download the audio file
         const audioBuffer = await downloadAudio(rawAudio);
