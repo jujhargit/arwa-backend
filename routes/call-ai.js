@@ -70,7 +70,7 @@ async function downloadAudio(url) {
     const buffer = await response.buffer();
 
     // Save the audio locally
-    const filePath = './recordings/audio.wav';
+    const filePath = '.../recordings/audio.wav';
     fs.writeFileSync(filePath, buffer);
     return filePath;
 }
